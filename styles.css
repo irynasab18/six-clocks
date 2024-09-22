@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.clocks {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.view-div {
+    margin-bottom: 70px;
+}
+
+.dom-view,
+.svg-view,
+.canvas-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.view-title {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+canvas {
+    margin: 10px 0;
+    border: none;
+    outline: none;
+}
+
+
+.clock {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: #c1cce8;
+}
+
+.number {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #2a385d;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: bold 15px Impact, Helvetica, Arial, sans-serif;
+    color: white;
+    z-index: 1;
+}
+
+.hand {
+    position: absolute;
+    background-color: black;
+    transform-origin: bottom;
+    border-radius: 2px;
+    left: 50%;
+    bottom: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.hour-hand {
+    width: 9px;
+    height: 75px;
+}
+
+.minute-hand {
+    width: 7px;
+    height: 100px;
+}
+
+.second-hand {
+    width: 3px;
+    height: 115px;
+    background-color: red;
+}
+
+.main-circle {
+    fill: #c1cce8;
+}
+
+.digits-circle {
+    fill: #2a385d;
+}
+
+.nums-style {
+    font: bold 15px Impact, Helvetica, Arial, sans-serif;
+    fill: white;
+}
+
+.digit-clock {
+    font-size: 35px;
+    fill: white;
+}
+
+.hands-color {
+    stroke: #081024;
+}
+
+.sec-color {
+    stroke: #d63133;
+}
