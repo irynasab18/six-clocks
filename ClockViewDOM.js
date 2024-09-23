@@ -21,7 +21,7 @@ export class DOMView {
         this.createClockHands();
     }
 
-    mainDOM(secondDeg, minuteDeg, hourDeg) {
+    update(secondDeg, minuteDeg, hourDeg) {
         this.updateClock(secondDeg, minuteDeg, hourDeg);
     }
 
@@ -62,12 +62,10 @@ export class DOMView {
         this.clockDiv.append(this.secondHand);
     }
 
-
-    updateClock(secondDeg, minuteDeg, hourDeg) {
+    updateClock(secondDeg, minuteDeg, hourDeg, hAngle, mAngle, sAngle) {
         this.secondHand.style.transform = `rotate(${secondDeg}deg)`;
         this.minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
         this.hourHand.style.transform = `rotate(${hourDeg}deg)`;
-        console.log('dom ', secondDeg, minuteDeg, hourDeg)
     }
 }
 
