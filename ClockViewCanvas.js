@@ -33,16 +33,14 @@ export class CanvasView {
     }
 
     init() {
-        console.log(this.container)
         this.canvas = this.container.querySelector('.canvas-clock');
         this.ctx = this.canvas.getContext('2d');
     }
 
-    mainCanvas(hAngle, mAngle, sAngle) {
+    update(secondDeg, minuteDeg, hourDeg, hAngle, mAngle, sAngle) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawClock();
         this.drawHands(hAngle, mAngle, sAngle);
-        console.log('canvas ', hAngle, mAngle, sAngle)
     }
 
     drawClock() {
@@ -77,8 +75,8 @@ export class CanvasView {
         this.ctx.lineWidth = this.hWidth;
         this.ctx.moveTo(this.mainX, this.mainY);
         this.ctx.lineTo(
-            this.mainX + this.hLength * Math.cos(hAngle),
-            this.mainY + this.hLength * Math.sin(hAngle)
+            this.mainX + this.hLength * Math.cos(hAngle - Math.PI / 2),
+            this.mainY + this.hLength * Math.sin(hAngle - Math.PI / 2)
         );
         this.ctx.stroke();
 
@@ -87,8 +85,8 @@ export class CanvasView {
         this.ctx.lineWidth = this.mWidth;
         this.ctx.moveTo(this.mainX, this.mainY);
         this.ctx.lineTo(
-            this.mainX + this.mLength * Math.cos(mAngle),
-            this.mainY + this.mLength * Math.sin(mAngle)
+            this.mainX + this.mLength * Math.cos(mAngle - Math.PI / 2),
+            this.mainY + this.mLength * Math.sin(mAngle - Math.PI / 2)
         );
         this.ctx.stroke();
 
@@ -97,8 +95,8 @@ export class CanvasView {
         this.ctx.lineWidth = this.sWidth;
         this.ctx.moveTo(this.mainX, this.mainY);
         this.ctx.lineTo(
-            this.mainX + this.sLength * Math.cos(sAngle),
-            this.mainY + this.sLength * Math.sin(sAngle)
+            this.mainX + this.sLength * Math.cos(sAngle - Math.PI / 2),
+            this.mainY + this.sLength * Math.sin(sAngle - Math.PI / 2)
         );
         this.ctx.stroke();
     }
