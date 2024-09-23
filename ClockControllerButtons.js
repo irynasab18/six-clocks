@@ -6,16 +6,16 @@ export class Controller {
     }
 
     init() {
-        this.model.startClock(this.container.id.slice(0, 2));
+        this.model.startClock(this.btns.id);
         this.btns.addEventListener('click', (event) => this.doOnClick(event));
     }
 
     doOnClick(event) {
         if (event.target.className === 'start') {
-            this.model.startClock(event.target.id.slice(0, 2));
+            this.model.startClock(event.currentTarget.id);
         }
         if (event.target.className === 'stop') {
-            this.model.stopClock(event.target.id.slice(0, 2));
+            this.model.stopClock(event.currentTarget.id);
         }
     }
 
