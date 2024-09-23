@@ -29,16 +29,14 @@ export class SVGView {
 
     init() {
         this.svg = document.createElementNS(this.ns, 'svg');
-        console.log(this.svg)
         this.svg.setAttribute('width', this.svgWidth);
         this.svg.setAttribute('height', this.svgHeight);
         this.container.append(this.svg);
         this.drawClock();
     }
 
-    mainSVG(hAngle, mAngle, sAngle) {
+    update(secondDeg, minuteDeg, hourDeg, hAngle, mAngle, sAngle) {
         this.drawHands(hAngle, mAngle, sAngle);
-        console.log('svg ', hAngle, mAngle, sAngle)
     }
 
     drawClock() {
@@ -70,11 +68,14 @@ export class SVGView {
 
             this.svg.append(smallCircle);
             this.svg.append(digit);
+
+            this.hourHand = document.createElementNS(this.ns, 'line');
+            this.minuteHand = document.createElementNS(this.ns, 'line');
+            this.secondHand = document.createElementNS(this.ns, 'line');
         }
     }
 
     drawHands(hAngle, mAngle, sAngle) {
-        this.hourHand = document.createElementNS(this.ns, 'line');
         let hx2 = this.handsInitPosition + this.hLength * Math.cos(hAngle - Math.PI / 2);
         let hy2 = this.handsInitPosition + this.hLength * Math.sin(hAngle - Math.PI / 2);
         this.hourHand.setAttribute('x1', this.handsInitPosition);
@@ -85,7 +86,6 @@ export class SVGView {
         this.hourHand.setAttribute('stroke-width', this.hourStroke);
         this.svg.append(this.hourHand);
 
-        this.minuteHand = document.createElementNS(this.ns, 'line');
         let mx2 = this.handsInitPosition + this.mLength * Math.cos(mAngle - Math.PI / 2);
         let my2 = this.handsInitPosition + this.mLength * Math.sin(mAngle - Math.PI / 2);
         this.minuteHand.setAttribute('x1', this.handsInitPosition);
@@ -96,7 +96,6 @@ export class SVGView {
         this.minuteHand.setAttribute('stroke-width', this.minuteStroke);
         this.svg.append(this.minuteHand);
 
-        this.secondHand = document.createElementNS(this.ns, 'line');
         let sx2 = this.handsInitPosition + this.sLength * Math.cos(sAngle - Math.PI / 2);
         let sy2 = this.handsInitPosition + this.sLength * Math.sin(sAngle - Math.PI / 2);
         this.secondHand.setAttribute('x1', this.handsInitPosition);
@@ -108,47 +107,3 @@ export class SVGView {
         this.svg.append(this.secondHand);
     }
 }
-
-
-
-
-
-
-// function clockTick() {
-//     let clockSecond = second;
-//     let clockMinute = minute;
-//     let clockHour = hour;
-
-//     //Seconds tick
-//     let secondsId = setInterval(() => {
-//         sAngle = ((2 * Math.PI) / 60) * clockSecond;
-//         sx2 = handsInitPosition + sLength * Math.cos(sAngle - Math.PI / 2);
-//         sy2 = handsInitPosition + sLength * Math.sin(sAngle - Math.PI / 2);
-//         secondHand.setAttribute('x2', sx2);
-//         secondHand.setAttribute('y2', sy2);
-//         clockSecond++;
-//     }, 1000);
-
-//     //Minutes tick
-//     let minutesId = setInterval(() => {
-//         mAngle = ((2 * Math.PI) / 60) * clockMinute;
-//         mx2 = handsInitPosition + mLength * Math.cos(mAngle - Math.PI / 2);
-//         my2 = handsInitPosition + mLength * Math.sin(mAngle - Math.PI / 2);
-//         minuteHand.setAttribute('x2', mx2);
-//         minuteHand.setAttribute('y2', my2);
-//         clockMinute++;
-//     }, 1000 * 60);
-
-//     //Hours tick
-//     let hoursId = setInterval(() => {
-//         hAngle = ((2 * Math.PI) / 12) * clockHour;
-//         hx2 = handsInitPosition + hLength * Math.cos(hAngle - Math.PI / 2);
-//         hy2 = handsInitPosition + hLength * Math.sin(hAngle - Math.PI / 2);
-//         hourHand.setAttribute('x2', hx2);
-//         hourHand.setAttribute('y2', hy2);
-//         clockHour++;
-//     }, 1000 * 60 * 60);
-// }
-
-
-// clockTick();
